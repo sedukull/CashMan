@@ -1,14 +1,14 @@
-package com.company.cashman.dao;
+package main.java.com.company.cashman.dao;
 
 import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
 
+import main.java.com.company.cashman.lib.DefaultDenomination;
+import main.java.com.company.cashman.lib.Denomination;
 import org.springframework.stereotype.Component;
 
-import com.company.cashman.lib.DefaultDenomination;
-import com.company.cashman.lib.Denomination;
-import com.company.cashman.lib.DenominationType;
+import main.java.com.company.cashman.lib.DenominationType;
 
 /**
  *Default CashMan repository. Provides the persistence layer for CashMan repository.

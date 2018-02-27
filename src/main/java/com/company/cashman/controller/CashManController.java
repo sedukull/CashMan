@@ -1,6 +1,7 @@
-package com.company.cashman.controller;
+package main.java.com.company.cashman.controller;
 
-import com.company.cashman.lib.CashNotAvailableException;
+import main.java.com.company.cashman.lib.CashMan;
+import main.java.com.company.cashman.lib.CashNotAvailableException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Set;
 
-import com.company.cashman.lib.CashMan;
-import com.company.cashman.lib.Denomination;
-import com.company.cashman.lib.DenominationType;
+import main.java.com.company.cashman.lib.Denomination;
 
 @RestController
 public class CashManController {
@@ -90,8 +89,7 @@ public class CashManController {
      */
     @RequestMapping("/getDenominationCount/{denominationType:[\\d]+}")
     @ResponseBody
-    public ResponseEntity<Long> denominationCount(@PathVariable final int denomination) {
-        DenominationType denominationType = DenominationType.getDenominationType(denomination);
+    public ResponseEntity<Long> denominationCount(@PathVariable final int denominationType) {
         long count =  cashMan.getDenominationCount(denominationType);
         return new ResponseEntity<>(Long.valueOf(count), HttpStatus.OK);
     }

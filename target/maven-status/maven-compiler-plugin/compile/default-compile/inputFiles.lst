@@ -1,5 +1,7 @@
 /Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/CashManConfig.java
+/Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/lib/DynamicProgrammingOfCashManAlgorithm.java
 /Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/lib/DefaultDenomination.java
+/Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/lib/CashManAlgorithm.java
 /Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/lib/CashNotAvailableException.java
 /Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/dao/CashManRepository.java
 /Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/lib/Denomination.java
@@ -7,7 +9,8 @@
 /Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/dao/DynamoDBBasedCashManTable.java
 /Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/lib/DenominationType.java
 /Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/CashManApplication.java
-/Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/CashManController.java
+/Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/controller/CashManController.java
 /Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/lib/DefaultCashMan.java
 /Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/dao/DefaultCashManRepository.java
 /Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/lib/CashMan.java
+/Users/kumsnth/workplace/kumsnth/CashMan/src/main/java/com/company/cashman/lib/RecursiveImplementationOfCashManAlgorithm.java

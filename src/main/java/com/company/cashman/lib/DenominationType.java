@@ -1,4 +1,4 @@
-package com.company.cashman.lib;
+package main.java.com.company.cashman.lib;
 
 /**
  *Represents the valid denomination types supported by CashMan application.

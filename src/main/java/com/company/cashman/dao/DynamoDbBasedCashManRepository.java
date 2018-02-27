@@ -1,4 +1,4 @@
-package com.company.cashman.dao;
+package main.java.com.company.cashman.dao;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
@@ -11,9 +11,9 @@ import java.util.TreeSet;
 import java.util.Set;
 import java.util.Map;
 
-import com.company.cashman.lib.Denomination;
-import com.company.cashman.lib.DefaultDenomination;
-import com.company.cashman.lib.DenominationType;
+import main.java.com.company.cashman.lib.Denomination;
+import main.java.com.company.cashman.lib.DefaultDenomination;
+import main.java.com.company.cashman.lib.DenominationType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

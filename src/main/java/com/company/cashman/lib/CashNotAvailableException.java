@@ -1,4 +1,4 @@
-package com.company.cashman.lib;
+package main.java.com.company.cashman.lib;
 
 /**
  *Exception thrown when enough denominations are not available matching with provided input.

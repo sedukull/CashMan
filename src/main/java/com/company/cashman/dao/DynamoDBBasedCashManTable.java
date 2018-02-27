@@ -1,4 +1,4 @@
-package com.company.cashman.dao;
+package main.java.com.company.cashman.dao;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;

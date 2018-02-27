@@ -1,4 +1,4 @@
-package com.company.cashman.lib;
+package main.java.com.company.cashman.lib;
 
 import java.util.Set;
 
@@ -41,10 +41,10 @@ public interface CashMan {
     /**
      * Provides the available denomination count for a given denomination type.
      * (EX: count of 5$ notes in the available currency).
-     * @param DenominationType
+     * @param  denominationValue
      * @return count of denomination for the given type.
      */
-    long getDenominationCount(final DenominationType DenominationType);
+    int getDenominationCount(final int denominationValue);
 
     /**
      * provides the total currency (Set of DenominationType(5$,10$ etc) and their count in CashMan application.

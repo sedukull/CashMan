@@ -1,21 +1,21 @@
-package com.company.cashman;
+package main.java.com.company.cashman;
 
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
-import com.company.cashman.lib.CashManAlgorithm;
-import com.company.cashman.lib.DynamicProgrammingOfCashManAlgorithm;
-import com.company.cashman.lib.RecursiveImplementationOfCashManAlgorithm;
+import main.java.com.company.cashman.lib.CashManAlgorithm;
+import main.java.com.company.cashman.lib.DynamicProgrammingOfCashManAlgorithm;
+import main.java.com.company.cashman.lib.RecursiveImplementationOfCashManAlgorithm;
+import main.java.com.company.cashman.dao.CashManRepository;
+import main.java.com.company.cashman.lib.CashMan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
-import com.company.cashman.dao.DynamoDbBasedCashManRepository;
-import com.company.cashman.dao.DefaultCashManRepository;
-import com.company.cashman.dao.CashManRepository;
-import com.company.cashman.lib.DefaultCashMan;
-import com.company.cashman.lib.CashMan;
+import main.java.com.company.cashman.dao.DynamoDbBasedCashManRepository;
+import main.java.com.company.cashman.dao.DefaultCashManRepository;
+import main.java.com.company.cashman.lib.DefaultCashMan;
 
 @Configuration
 @EnableAutoConfiguration

@@ -1,4 +1,4 @@
-package com.company.cashman.lib;
+package main.java.com.company.cashman.lib;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,13 +1,12 @@
-package com.company.cashman.lib;
+package main.java.com.company.cashman.lib;
 
+import main.java.com.company.cashman.dao.CashManRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.company.cashman.dao.CashManRepository;
 
 /**
  *DefaultCashMan implementation for CashMan.
@@ -92,7 +91,6 @@ public class DefaultCashMan implements CashMan {
                 throw new CashNotAvailableException(String.format("Enough denominations are not available to withdraw amount: %d",
                     withDrawAmount));
             }
-
         }
     }
 
@@ -132,7 +130,7 @@ public class DefaultCashMan implements CashMan {
                     .collect(Collectors.joining()));
                 denominationSet
                     .stream().forEach(e -> availableCurrencySet.stream()
-                    .filter(d -> d.getDenominationType() == e.getDenominationType() && e.getDenominationCount() > 0)
+                    .filter(d -> d.getDenominationType().getValue() == e.getDenominationType().getValue() && e.getDenominationCount() > 0)
                     .findAny().get().removeCount(e.getDenominationCount()));
             }
         }
@@ -140,20 +138,22 @@ public class DefaultCashMan implements CashMan {
 
     /**
      * {@inheritDoc}
-     * @param denominationType
+     * @param denominationValue
      * @return the denomination count for a given denomination type.
      */
     @Override
-    public long getDenominationCount(final DenominationType denominationType) throws IllegalArgumentException {
+    public int getDenominationCount(final int denominationValue) throws IllegalArgumentException {
+        int availableCount = 0;
         synchronized(this) {
-            if (denominationType != null) {
-                return availableCurrencySet.stream()
-                    .filter(x -> x.getDenominationType() == denominationType)
-                    .findAny()
-                    .orElseThrow(() ->
-                        new IllegalArgumentException("Invalid denomination type, please check.")).getDenominationCount();
+            if (denominationValue > 0) {
+                availableCount = availableCurrencySet.stream()
+                    .filter(x -> x.getDenominationType().getValue() == denominationValue)
+                    .mapToInt(x-> x.getDenominationCount()).sum();
             }
-            throw new IllegalArgumentException("Invalid denomination type, please check.");
+            if (availableCount <= 0) {
+                throw new IllegalArgumentException("Invalid denomination type, please check.");
+            }
+            return availableCount;
         }
     }
 
