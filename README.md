@@ -35,8 +35,8 @@ o The CashMan application should not reduce the amount of available cash in case
 
 We will provide the following CashMan WithDraw algorithms for the mentioned CashMan problem.
 
-1. Greedy Algorithm: A recursive mechanism to iterate over the available currency, deriving the required denomination at each stage for the provided input.
-2.Optimal Dynamic Programming variant: Below we provide the dynamic programming algorithm solve the given problem.
+### Greedy Algorithm: A recursive mechanism to iterate over the available currency, deriving the required denomination at each stage for the provided input.
+### Optimal Dynamic Programming variant: Below we provide the dynamic programming algorithm solve the given problem.
 
 The mentioned problem is a semi NP-hard problem.
 o Let's say the amount to be withdrawn is x. Set WithDrawAmount = x.
