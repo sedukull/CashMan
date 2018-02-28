@@ -1,7 +1,6 @@
 # CashMan Problem and Algorithm
 
-
-Problem Statement:
+## Problem Statement:
 Given an amount W, also a positive integer, to find a set of non-negative (positive or zero) integers {x1, x2, ..., xn}, with each xj representing how often the coin with value wj is used, with minimal total number of coins, i.e., For (j: 1 to N) Sum(xj)  should be minimum, subject to Sum(wj * xj) = W.
 
 ## Glossary and Terminology:
@@ -11,11 +10,13 @@ Given an amount W, also a positive integer, to find a set of non-negative (posit
 4. Available Total Currency: Represents the total currency available in the CashMan application, i.e., Sum(denominationType(J) * denominationCount(j)).
 
 ## Scope:
+
 ### InScope:
 o CashMan Withdraw algorithm: Core Algorithm for withdrawing the amount from the given CashMan available currency.
 o CashMan DynamoDB repository: DynamoDB based repository for the available currency in CashMan application.
 o CashMan Default repository: Repository of available currency persisted and retrieved as part of memory.
 o CashMan APIs: Spring boot-based API's for withdraw, addition, remove denominations from the available currency.
+
 ### OutOfScope:
 o Support of Transactions.
 o Integration tests.
@@ -32,7 +33,6 @@ o The CashMan application should reduce the amount of available cash in the mach
 o The CashMan application should not reduce the amount of available cash in case of an error.
 
 ## CashMan WithDraw Algorithm:
-
 We will provide the following CashMan WithDraw algorithms for the mentioned CashMan problem.
 
 ### Greedy Algorithm:
@@ -70,7 +70,7 @@ o Default CashMan Repository: Stores and retrieves the denomination information 
 
 Following are the repository API's.
 
-public interface CashManRepository {
+    public interface CashManRepository {
     /**
      * Retrieves the initial denomination of currency available from external store say DynamoDB.
      * This currency will be used to initialize the CashMan application for further vending.
@@ -83,53 +83,52 @@ public interface CashManRepository {
      * @param denominationSet  Denomination set to be persisted.
      */
     void persistDenomination(final Set<Denomination> denominationSet);
-}
+    }
 
 
 ## CashMan Application:
 
 CashMan interface for CashMan application. Following are the API's, provided as extension point for the CashMan application.
 
+    /**
+     * Initializes the CashMan application with required currency from repository.
+     * Provides to the user available denomination types and counts in CashMan application.
+     */
+    void initialize();
 
-/**
- * Initializes the CashMan application with required currency from repository.
- * Provides to the user available denomination types and counts in CashMan application.
- */
-void initialize();
+    /**
+     * With draws the given amount from CashMan application and provides the list of Denominations matched with the provided        input amount.
+     * @param withDrawAmount
+     * @return
+     */
+    Set<Denomination> withDraw(final int withDrawAmount) throws CashNotAvailableException;
 
-/**
- * With draws the given amount from CashMan application and provides the list of Denominations matched with the provided input amount.
- * @param withDrawAmount
- * @return
- */
-Set<Denomination> withDraw(final int withDrawAmount) throws CashNotAvailableException;
+    /**
+     * Adds the provided denomination set to the available currency.
+     * @param denominationList
+     */
+    void addToAvailableCurrency(final Set<Denomination> denominationList);
 
-/**
- * Adds the provided denomination set to the available currency.
- * @param denominationList
- */
-void addToAvailableCurrency(final Set<Denomination> denominationList);
+    /**
+     * Removes the denominations from the available currency.
+     * @param denominationList
+     */
+    void removeFromAvailableCurrency(final Set<Denomination> denominationList);
 
-/**
- * Removes the denominations from the available currency.
- * @param denominationList
- */
-void removeFromAvailableCurrency(final Set<Denomination> denominationList);
+    /**
+     * Provides the available denomination count for a given denomination type.
+     * (EX: count of 5$ notes in the available currency).
+     * @return count of denomination for the given type.
+     */
+    int getDenominationCount(final int DenominationType);
 
-/**
- * Provides the available denomination count for a given denomination type.
- * (EX: count of 5$ notes in the available currency).
- * @return count of denomination for the given type.
- */
-int getDenominationCount(final int DenominationType);
+    /**
+     * provides the total currency (Set of DenominationType(5$,10$ etc) and their count in CashMan application.
+     * @return set with available total currency in CashMan application.
+     */
+    Set<Denomination> totalAvailableCurrency();
 
-/**
- * provides the total currency (Set of DenominationType(5$,10$ etc) and their count in CashMan application.
- * @return set with available total currency in CashMan application.
- */
-Set<Denomination> totalAvailableCurrency();
-
-Pre-Requisites:
+## Pre-Requisites:
     Amazon AWS Java SDK: 1.11.106
     Junit: 4.13, mockito:
     ApacheMaven: 4.x
@@ -139,9 +138,7 @@ Pre-Requisites:
 
 
 ## Running the CashMan Application through CLI
-
     mvn spring-boot:run //It will then launch an application on port 8080.
-
 
 ## Running the CashMan Application through IntelliJ
 Import the CashMan project(pom.xml) as mvn project.
