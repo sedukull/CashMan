@@ -4,13 +4,13 @@
 Problem Statement:
 Given an amount W, also a positive integer, to find a set of non-negative (positive or zero) integers {x1, x2, ..., xn}, with each xj representing how often the coin with value wj is used, with minimal total number of coins, i.e., For (j: 1 to N) Sum(xj)  should be minimum, subject to Sum(wj * xj) = W.
 
-Glossary and Terminology:
-o Denomination Type: Represents the valid denomination types supported by CashMan application. (EX: 5$, 10$, 20$, 50$ etc).
-o Denomination Count: Represents the count of various denomination types available in the system.
-o Denomination: An entity representation of given DenominationType and its total Count Ex: Denomination (5$, 10) represents the count of 5$ available in the CashMan application and its count as 10.
-o Available Total Currency: Represents the total currency available in the CashMan application, i.e., Sum(denominationType(J) * denominationCount(j)).
+## Glossary and Terminology:
+1. Denomination Type: Represents the valid denomination types supported by CashMan application. (EX: 5$, 10$, 20$, 50$ etc).
+2. Denomination Count: Represents the count of various denomination types available in the system.
+3. Denomination: An entity representation of given DenominationType and its total Count Ex: Denomination (5$, 10) represents the count of 5$ available in the CashMan application and its count as 10.
+4. Available Total Currency: Represents the total currency available in the CashMan application, i.e., Sum(denominationType(J) * denominationCount(j)).
 
-Scope:
+## Scope:
 InScope:
 o CashMan Withdraw algorithm: Core Algorithm for withdrawing the amount from the given CashMan available currency.
 o CashMan DynamoDB repository: DynamoDB based repository for the available currency in CashMan application.
@@ -21,7 +21,7 @@ o Support of Transactions.
 o Integration tests.
 o Automated build.
 
-Requirements:
+## Requirements:
 Following are broad use cases and requirements for CashMan application.
 o The CashMan application must know how many of each type of bank note it has. It should be able to report back how much of each note it has.
 o The CashMan application should be possible to tell it that it has so many of each type of note during initialisation. After initialisation, it is only possible to add or remove notes.
@@ -31,7 +31,7 @@ o The CashMan application should report an error condition If a request cannot b
 o The CashMan application should reduce the amount of available cash in the machine post dispensation.
 o The CashMan application should not reduce the amount of available cash in case of an error.
 
-CashMan WithDraw Algorithm:
+## CashMan WithDraw Algorithm:
 
 We will provide the following CashMan WithDraw algorithms for the mentioned CashMan problem.
 
@@ -57,10 +57,10 @@ o Include the denomination: Verify the count of denominations included for this 
 o Exclude the denomination: solution for the same amount without considering that denomination.
 o Else If denomination value is greater than the amount, then we can't consider that denomination, so solution will be without considering that denomination.
 
-Synchronization/Concurrency:
+## Synchronization/Concurrency:
 We will synchronize the available currency set in the CashMan application for the withdraw, add, remove operations. More details about these operations mentioned below. There will only be single instance of CashMan dealing with these operations per given process.
 
-CashMan Repository
+## CashMan Repository
 
 CashMan repository stores the available currency of denominations for CashMan application. It by default provides two sets of repositories: DynamoDB based and Default.
 o DynamoDB Repository: Stores and retrieves the denomination information from DynamoDB.
@@ -84,7 +84,7 @@ public interface CashManRepository {
 }
 
 
-CashMan Application:
+## CashMan Application:
 
 CashMan interface for CashMan application. Following are the API's, provided as extension point for the CashMan application.
 
@@ -136,12 +136,12 @@ Pre-Requisites:
     AWS Account for DynamoDB (In case you want to use DynamoDB as repository). The implementation as well adds a default repository with predefined denomination for usage.
 
 
-Running the CashMan Application through CLI
+## Running the CashMan Application through CLI
 
     mvn spring-boot:run //It will then launch an application on port 8080.
 
 
-Running the CashMan Application through IntelliJ
+## Running the CashMan Application through IntelliJ
 Import the CashMan project(pom.xml) as mvn project.
 Right click on CashManApplication.java and click run.
 // It will then launch an application on port 8080.
