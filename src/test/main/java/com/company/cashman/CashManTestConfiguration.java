@@ -1,12 +1,12 @@
-package main.java.com.company.cashman;
+package com.company.cashman;
 
-import main.java.com.company.cashman.dao.CashManRepository;
+import com.company.cashman.dao.CashManRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Profile;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 
 import static org.mockito.Mockito.spy;
 

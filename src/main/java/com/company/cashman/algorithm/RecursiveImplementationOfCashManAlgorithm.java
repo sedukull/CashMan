@@ -1,8 +1,8 @@
-package main.java.com.company.cashman.algorithm;
+package com.company.cashman.algorithm;
 
-import main.java.com.company.cashman.lib.DefaultDenomination;
-import main.java.com.company.cashman.lib.Denomination;
-import main.java.com.company.cashman.lib.DenominationType;
+import com.company.cashman.lib.DefaultDenomination;
+import com.company.cashman.lib.Denomination;
+import com.company.cashman.lib.DenominationType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

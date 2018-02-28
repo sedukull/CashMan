@@ -1,7 +1,8 @@
-package main.java.com.company.cashman.dao;
+package com.company.cashman.dao;
 
 import java.util.Set;
-import main.java.com.company.cashman.lib.Denomination;
+
+import com.company.cashman.lib.Denomination;
 
 /**
  * CashMan Repository does the following:

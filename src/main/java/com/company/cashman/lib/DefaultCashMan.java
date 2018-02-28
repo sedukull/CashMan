@@ -1,13 +1,14 @@
-package main.java.com.company.cashman.lib;
+package com.company.cashman.lib;
 
-import main.java.com.company.cashman.algorithm.CashManAlgorithm;
-import main.java.com.company.cashman.dao.CashManRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.company.cashman.algorithm.CashManAlgorithm;
+import com.company.cashman.dao.CashManRepository;
 
 /**
  *DefaultCashMan implementation for CashMan.

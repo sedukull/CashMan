@@ -1,15 +1,15 @@
-package main.java.com.company.cashman;
+package com.company.cashman;
 
+import com.company.cashman.CashManConfig;
+import com.company.cashman.lib.DefaultDenomination;
+import com.company.cashman.lib.Denomination;
+import com.company.cashman.lib.DenominationType;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-
-import main.java.com.company.cashman.lib.Denomination;
-import main.java.com.company.cashman.lib.DefaultDenomination;
-import main.java.com.company.cashman.lib.DenominationType;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

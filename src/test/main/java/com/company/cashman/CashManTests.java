@@ -1,30 +1,30 @@
-package main.java.com.company.cashman;
+package com.company.cashman;
 
-import java.util.Arrays;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.TreeSet;
-
-import main.java.com.company.cashman.dao.CashManRepository;
-import main.java.com.company.cashman.algorithm.CashManAlgorithm;
-import main.java.com.company.cashman.lib.DefaultCashMan;
+import com.company.cashman.CashManConfig;
+import com.company.cashman.algorithm.CashManAlgorithm;
+import com.company.cashman.dao.CashManRepository;
+import com.company.cashman.lib.CashMan;
+import com.company.cashman.lib.CashNotAvailableException;
+import com.company.cashman.lib.DefaultCashMan;
+import com.company.cashman.lib.DefaultDenomination;
+import com.company.cashman.lib.Denomination;
+import com.company.cashman.lib.DenominationType;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import main.java.com.company.cashman.lib.DenominationType;
-import main.java.com.company.cashman.lib.CashMan;
-import main.java.com.company.cashman.lib.Denomination;
-import main.java.com.company.cashman.lib.DefaultDenomination;
-import main.java.com.company.cashman.lib.CashNotAvailableException;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = {CashManConfig.class})

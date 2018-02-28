@@ -1,8 +1,5 @@
-package main.java.com.company.cashman.algorithm;
+package com.company.cashman.algorithm;
 
-import main.java.com.company.cashman.lib.DefaultDenomination;
-import main.java.com.company.cashman.lib.Denomination;
-import main.java.com.company.cashman.lib.DenominationType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -11,11 +8,15 @@ import java.util.HashSet;
 import java.util.Arrays;
 import java.util.Set;
 
+import com.company.cashman.lib.DefaultDenomination;
+import com.company.cashman.lib.Denomination;
+import com.company.cashman.lib.DenominationType;
+
 @Component
 public class DynamicProgrammingOfCashManAlgorithm implements CashManAlgorithm {
 
     private Set<Denomination> availableCurrencySet;
-    private final static Logger logger = LoggerFactory.getLogger(RecursiveImplementationOfCashManAlgorithm.class);
+    private final static Logger logger = LoggerFactory.getLogger(DynamicProgrammingOfCashManAlgorithm.class);
 
     @Override
     public Set<Denomination> withDraw(final int withDrawAmount, final Set<Denomination> availableCurrencySet) {

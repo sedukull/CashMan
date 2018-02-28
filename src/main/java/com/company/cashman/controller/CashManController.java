@@ -1,4 +1,4 @@
-package main.java.com.company.cashman.controller;
+package com.company.cashman.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Set;
 
-import main.java.com.company.cashman.lib.Denomination;
-import main.java.com.company.cashman.lib.CashMan;
-import main.java.com.company.cashman.lib.CashNotAvailableException;
+import com.company.cashman.lib.Denomination;
+import com.company.cashman.lib.CashMan;
+import com.company.cashman.lib.CashNotAvailableException;
 
 /**
  *CashMan REST request router.

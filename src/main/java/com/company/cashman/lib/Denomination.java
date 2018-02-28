@@ -1,4 +1,4 @@
-package main.java.com.company.cashman.lib;
+package com.company.cashman.lib;
 
 /**
  *Represents the denomination (Denomination Type and count) and related interfaces for CashMan application.

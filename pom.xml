@@ -35,7 +35,8 @@
                 </executions>
             </plugin>
         </plugins>
-        <sourceDirectory>src</sourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/main/java</testSourceDirectory>
     </build>
     <dependencyManagement>
         <dependencies>
