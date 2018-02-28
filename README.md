@@ -11,12 +11,12 @@ Given an amount W, also a positive integer, to find a set of non-negative (posit
 4. Available Total Currency: Represents the total currency available in the CashMan application, i.e., Sum(denominationType(J) * denominationCount(j)).
 
 ## Scope:
-InScope:
+### InScope:
 o CashMan Withdraw algorithm: Core Algorithm for withdrawing the amount from the given CashMan available currency.
 o CashMan DynamoDB repository: DynamoDB based repository for the available currency in CashMan application.
 o CashMan Default repository: Repository of available currency persisted and retrieved as part of memory.
 o CashMan APIs: Spring boot-based API's for withdraw, addition, remove denominations from the available currency.
-OutOfScope:
+### OutOfScope:
 o Support of Transactions.
 o Integration tests.
 o Automated build.
@@ -35,8 +35,8 @@ o The CashMan application should not reduce the amount of available cash in case
 
 We will provide the following CashMan WithDraw algorithms for the mentioned CashMan problem.
 
-### Greedy Algorithm: A recursive mechanism to iterate over the available currency, deriving the required denomination at each stage for the provided input.
-### Optimal Dynamic Programming variant: Below we provide the dynamic programming algorithm solve the given problem.
+###Greedy Algorithm: A recursive mechanism to iterate over the available currency, deriving the required denomination at each stage for the provided input.
+###Optimal Dynamic Programming variant: Below we provide the dynamic programming algorithm solve the given problem.
 
 The mentioned problem is a semi NP-hard problem.
 o Let's say the amount to be withdrawn is x. Set WithDrawAmount = x.
