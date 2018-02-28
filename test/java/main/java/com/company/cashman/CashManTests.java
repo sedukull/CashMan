@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.TreeSet;
 
 import main.java.com.company.cashman.dao.CashManRepository;
-import main.java.com.company.cashman.lib.CashManAlgorithm;
+import main.java.com.company.cashman.algorithm.CashManAlgorithm;
 import main.java.com.company.cashman.lib.DefaultCashMan;
 import org.junit.Assert;
 import org.junit.Before;

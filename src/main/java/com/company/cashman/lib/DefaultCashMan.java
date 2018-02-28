@@ -1,5 +1,6 @@
 package main.java.com.company.cashman.lib;
 
+import main.java.com.company.cashman.algorithm.CashManAlgorithm;
 import main.java.com.company.cashman.dao.CashManRepository;
 import org.springframework.stereotype.Component;
 

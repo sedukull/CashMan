@@ -1,7 +1,5 @@
 package main.java.com.company.cashman.controller;
 
-import main.java.com.company.cashman.lib.CashMan;
-import main.java.com.company.cashman.lib.CashNotAvailableException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.Set;
 
 import main.java.com.company.cashman.lib.Denomination;
+import main.java.com.company.cashman.lib.CashMan;
+import main.java.com.company.cashman.lib.CashNotAvailableException;
 
+/**
+ *CashMan REST request router.
+ */
 @RestController
 public class CashManController {
 

@@ -1,4 +1,6 @@
-package main.java.com.company.cashman.lib;
+package main.java.com.company.cashman.algorithm;
+
+import main.java.com.company.cashman.lib.Denomination;
 
 import java.util.Set;
 
