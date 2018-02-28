@@ -40,9 +40,9 @@ CashMan WithDraw Algorithm:
 We will provide the following CashMan WithDraw algorithms for the mentioned CashMan problem.
 
 1. Greedy Algorithm: A recursive mechanism to iterate over the available currency, deriving the required denomination at each stage for the provided input.
-
 2.Optimal Dynamic Programming variant: Below we provide the dynamic programming algorithm solve the given problem.
-o The mentioned problem is a semi NP-hard problem.
+
+The mentioned problem is a semi NP-hard problem.
 o Let's say the amount to be withdrawn is x. Set WithDrawAmount = x.
 o Number of denominations required = min (1 + numberOfCoins(WithDrawAmount-di)), where i <= number of denominations.
 o A recursive solution to the mentioned problem finding combinations of outputs, will require semi polynomial time (i.e., 2 power n) and so time consuming. It may not be an optimal solution.
@@ -64,14 +64,13 @@ o Else If denomination value is greater than the amount, then we can't consider 
 Synchronization/Concurrency:
 We will synchronize the available currency set in the CashMan application for the withdraw, add, remove operations. More details about these operations mentioned below. There will only be single instance of CashMan dealing with these operations per given process.
 
-
 CashMan Repository
 
 CashMan repository stores the available currency of denominations for CashMan application. It by default provides two sets of repositories: DynamoDB based and Default.
 o DynamoDB Repository: Stores and retrieves the denomination information from DynamoDB.
 o Default CashMan Repository: Stores and retrieves the denomination information inside memory as part of application. Initialized through a bean.
 
- Following are the repository API's.
+Following are the repository API's.
 
 public interface CashManRepository {
     /**
@@ -133,18 +132,17 @@ int getDenominationCount(final int DenominationType);
 Set<Denomination> totalAvailableCurrency();
 
 Pre-Requisites:
-Amazon AWS Java SDK: 1.11.106
-Junit: 4.13, mockito:
-ApacheMaven: 4.x
-Spring: 5.0.3
-SpringBoot: 1.5.10
-AWS Account for DynamoDB (In case you want to use DynamoDB as repository). The implementation as well adds a default repository with predefined denomination for usage.
+    Amazon AWS Java SDK: 1.11.106
+    Junit: 4.13, mockito:
+    ApacheMaven: 4.x
+    Spring: 5.0.3
+    SpringBoot: 1.5.10
+    AWS Account for DynamoDB (In case you want to use DynamoDB as repository). The implementation as well adds a default repository with predefined denomination for usage.
 
 
 Running the CashMan Application through CLI
 
-mvn spring-boot:run
-//It will then launch an application on port 8080.
+    mvn spring-boot:run //It will then launch an application on port 8080.
 
 
 Running the CashMan Application through IntelliJ
@@ -152,8 +150,8 @@ Import the CashMan project(pom.xml) as mvn project.
 Right click on CashManApplication.java and click run.
 // It will then launch an application on port 8080.
 
-http://localhost:8080/withDraw/10 --> With draws 10$ from the application.
-http://localhost:8080/ í Provides the total available currency in Cashman application.
-http://localhost:8080/getDenominationCount/100 --> provides the denomination count for the given denomination. EX: 100$
+    http://localhost:8080/withDraw/10 --> With draws 10$ from the application.
+    http://localhost:8080/ í Provides the total available currency in Cashman application.
+    http://localhost:8080/getDenominationCount/100 --> provides the denomination count for the given denomination. EX: 100$
 
 
