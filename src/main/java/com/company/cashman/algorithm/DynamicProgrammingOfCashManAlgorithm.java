@@ -12,6 +12,9 @@ import com.company.cashman.lib.DefaultDenomination;
 import com.company.cashman.lib.Denomination;
 import com.company.cashman.lib.DenominationType;
 
+/**
+ * {@inheritDoc}
+ */
 @Component
 public class DynamicProgrammingOfCashManAlgorithm implements CashManAlgorithm {
 

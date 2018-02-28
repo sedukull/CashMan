@@ -50,12 +50,14 @@ public class DefaultCashMan implements CashMan {
      */
     @Override
     public void initialize() {
-        //Retrieve from DynamoDB and initialize availableCurrency.
-        //Note: For time being for this program we will hard code few denominations through DefaultCashManRepository.
-        this.availableCurrencySet = this.cashManRepository.retrieveDenomination();
-        logger.info("CashMan. Available Total Currency Value: {}", availableCurrencySet.stream()
-            .map(x -> x.toString())
-            .collect(Collectors.joining()));
+        synchronized (this) {
+            //Retrieve from DynamoDB and initialize availableCurrency.
+            //Note: For time being for this program we will hard code few denominations through DefaultCashManRepository.
+            this.availableCurrencySet = this.cashManRepository.retrieveDenomination();
+            logger.info("CashMan. Available Total Currency Value: {}", availableCurrencySet.stream()
+                .map(x -> x.toString())
+                .collect(Collectors.joining()));
+        }
     }
 
     /**

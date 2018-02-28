@@ -46,16 +46,18 @@ public class DynamoDbBasedCashManRepository implements CashManRepository {
      */
     @Override
     public Set<Denomination> retrieveDenomination() {
-        ScanRequest scanRequest = new ScanRequest()
-            .withTableName(CASHMAN_TABLE);
-        ScanResult result = client.scan(scanRequest);
-        TreeSet<Denomination> denominationTreeSet = new TreeSet<>();
-        for (Map<String, AttributeValue> item : result.getItems()){
-            String denominationType = item.get("getDenominationType").getS();
-            int denominationCount = Integer.parseInt(item.get("getDenominationCount").getS());
-            denominationTreeSet.add(new DefaultDenomination(DenominationType.valueOf(denominationType), denominationCount));
+        synchronized (this) {
+            ScanRequest scanRequest = new ScanRequest()
+                .withTableName(CASHMAN_TABLE);
+            ScanResult result = client.scan(scanRequest);
+            TreeSet<Denomination> denominationTreeSet = new TreeSet<>();
+            for (Map<String, AttributeValue> item : result.getItems()) {
+                String denominationType = item.get("getDenominationType").getS();
+                int denominationCount = Integer.parseInt(item.get("getDenominationCount").getS());
+                denominationTreeSet.add(new DefaultDenomination(DenominationType.valueOf(denominationType), denominationCount));
+            }
+            return denominationTreeSet;
         }
-        return denominationTreeSet;
     }
 
     /**
@@ -64,16 +66,18 @@ public class DynamoDbBasedCashManRepository implements CashManRepository {
      */
     @Override
     public void persistDenomination(final Set<Denomination> denominationSet) {
-        if (denominationSet != null && !denominationSet.isEmpty()) {
-            ArrayList<DynamoDBBasedCashManTable> cashManTableItemList = new ArrayList<>();
-            denominationSet.stream().forEach(
-                x -> cashManTableItemList.add(
-                    new DynamoDBBasedCashManTable(x.getDenominationType().getValue(), x.getDenominationCount())));
-            synchronized (this) {
-                DynamoDBMapper mapper = new DynamoDBMapper(client);
-                try {
-                    mapper.batchSave(cashManTableItemList);
-                } catch (Exception e) {
+        synchronized (this) {
+            if (denominationSet != null && !denominationSet.isEmpty()) {
+                ArrayList<DynamoDBBasedCashManTable> cashManTableItemList = new ArrayList<>();
+                denominationSet.stream().forEach(
+                    x -> cashManTableItemList.add(
+                        new DynamoDBBasedCashManTable(x.getDenominationType().getValue(), x.getDenominationCount())));
+                synchronized (this) {
+                    DynamoDBMapper mapper = new DynamoDBMapper(client);
+                    try {
+                        mapper.batchSave(cashManTableItemList);
+                    } catch (Exception e) {
+                    }
                 }
             }
         }
@@ -81,6 +85,8 @@ public class DynamoDbBasedCashManRepository implements CashManRepository {
 
     @Override
     public void initialize(final Set<Denomination> denominationSet) {
-        this.retrieveDenomination();
+        synchronized (this) {
+            this.retrieveDenomination();
+        }
     }
 }

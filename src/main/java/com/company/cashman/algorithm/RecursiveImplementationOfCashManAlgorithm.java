@@ -13,6 +13,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+/**
+ * {@inheritDoc}
+ * Note: This approach is WIP. Please use DynamicProgrammingvariant of CashMan.
+ */
 @Component
 public class RecursiveImplementationOfCashManAlgorithm implements CashManAlgorithm {
 

@@ -4,16 +4,16 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
 
-import com.company.cashman.lib.DefaultDenomination;
-import com.company.cashman.lib.Denomination;
 import org.springframework.stereotype.Component;
 
+import com.company.cashman.lib.DefaultDenomination;
+import com.company.cashman.lib.Denomination;
 import com.company.cashman.lib.DenominationType;
 
 /**
  *Default CashMan repository. Provides the persistence layer for CashMan repository.
  *Its used as an alternative to DynamoDB based CashMan repository. Repository used
- *incase the dynamodb/aws account is not available.
+ *in case the dynamodb/aws account is not available.
  *{@inheritDoc}
 */
 @Component
@@ -40,7 +40,9 @@ public class DefaultCashManRepository implements CashManRepository {
      */
     @Override
     public Set<Denomination> retrieveDenomination() {
-        return totalDenominations;
+        synchronized (this) {
+            return totalDenominations;
+        }
     }
 
     /**
@@ -51,15 +53,19 @@ public class DefaultCashManRepository implements CashManRepository {
      */
     @Override
     public void persistDenomination(final Set<Denomination> denominationSet) {
-        if (denominationSet.size() > 0) {
-            denominationSet
-                .stream().forEach(e -> totalDenominations.stream()
-                .filter(d -> d.getDenominationType() == e.getDenominationType()).findAny().get().addCount(e.getDenominationCount()));
+        synchronized (this) {
+            if (denominationSet.size() > 0) {
+                denominationSet
+                    .stream().forEach(e -> totalDenominations.stream()
+                    .filter(d -> d.getDenominationType() == e.getDenominationType()).findAny().get().addCount(e.getDenominationCount()));
+            }
         }
     }
 
     @Override
     public void initialize(final Set<Denomination> denominationSet) {
-        this.totalDenominations = denominationSet;
+        synchronized (this) {
+            this.totalDenominations = denominationSet;
+        }
     }
 }
