@@ -1,8 +1,8 @@
 package com.company.cashman.algorithm;
 
-import com.company.cashman.lib.Denomination;
-
 import java.util.Set;
+
+import com.company.cashman.lib.Denomination;
 
 /**
  *CashMan algorithm for with drawing amount from the given available currency set.

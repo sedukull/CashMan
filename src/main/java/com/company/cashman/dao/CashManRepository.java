@@ -6,7 +6,7 @@ import com.company.cashman.lib.Denomination;
 
 /**
  * CashMan Repository does the following:
- * 1. Retrieves the denomination set(available currency and count of each denomination) from external store say DynamoDB.
+ * 1. Retrieves the denomination set (available denominations and count of each denomination) from external store say DynamoDB.
  * 2. Persist the updated denomination by the application, to an external store say DynamoDB.
  */
 public interface CashManRepository {

@@ -1,7 +1,7 @@
 package com.company.cashman.lib;
 
 /**
- *Represents the denomination (Denomination Type and count) and related interfaces for CashMan application.
+ *Represents the denomination (denomination type and count) and related interfaces for CashMan application.
  */
 public interface Denomination extends Comparable<Denomination> {
     /**
