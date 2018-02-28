@@ -1,9 +1,5 @@
-# CashMan
+# CashMan Problem and Algorithm
 
-Provides the Dynamic programming Algorithm for CashMan problem.
-
-
-                                       CashMan
 
 Problem Statement:
 Given an amount W, also a positive integer, to find a set of non-negative (positive or zero) integers {x1, x2, ..., xn}, with each xj representing how often the coin with value wj is used, with minimal total number of coins, i.e., For (j: 1 to N) Sum(xj)  should be minimum, subject to Sum(wj * xj) = W.
