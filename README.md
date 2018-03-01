@@ -150,9 +150,9 @@ CashMan interface for CashMan application. Following are the API's, provided as 
 1. Import the CashMan project(pom.xml) as mvn project.
 2. Right click on CashManApplication.java and click run.
 
-// It will then launch an application on port 8080. Example:
-    http://localhost:8080/withDraw/10 --> With draws 10$ from the application.
-    http://localhost:8080/ í Provides the total available currency in Cashman application.
-    http://localhost:8080/getDenominationCount/100 --> provides the denomination count for the given denomination. EX: 100$
+ // It will then launch an application on port 8080. Example:
+    1. http://localhost:8080/withDraw/10 --> With draws 10$ from the application.
+    2. http://localhost:8080/ í Provides the total available currency in Cashman application.
+    3. http://localhost:8080/getDenominationCount/100 --> provides the denomination count for the given denomination. EX:   100$
 
 
