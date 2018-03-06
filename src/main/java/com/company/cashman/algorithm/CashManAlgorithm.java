@@ -5,15 +5,16 @@ import java.util.Set;
 import com.company.cashman.lib.Denomination;
 
 /**
- *CashMan algorithm for with drawing amount from the given available currency set.
+ *CashMan algorithm for with drawing an amount from the given available currency set.
  */
 @FunctionalInterface
 public interface CashManAlgorithm {
 
     /**
-     * With draws the given amount from CashMan application and provides the list of denominations matched with the provided input amount.
+     * With draws the user provided amount from CashMan available currency set.
+     * Provides the list of denominations and counts matched with the provided input amount.
      * @param withDrawAmount
-     * @return
+     * @return Set of denominations matched with input withdraw amount.
      */
     Set<Denomination> withDraw(final int withDrawAmount, final Set<Denomination> availableCurrencySet);
 }
