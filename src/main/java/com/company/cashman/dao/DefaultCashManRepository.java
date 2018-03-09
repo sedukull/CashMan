@@ -57,7 +57,7 @@ public class DefaultCashManRepository implements CashManRepository {
             if (denominationSet.size() > 0) {
                 denominationSet
                     .stream().forEach(e -> totalDenominations.stream()
-                    .filter(d -> d.getDenominationType() == e.getDenominationType()).findAny().get().addCount(e.getDenominationCount()));
+                    .filter(d -> d.getDenominationType() == e.getDenominationType()).findAny().get().addCount(e.getAvailableDenominationCount()));
             }
         }
     }

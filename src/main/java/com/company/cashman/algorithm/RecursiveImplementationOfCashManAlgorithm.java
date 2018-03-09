@@ -1,8 +1,5 @@
 package com.company.cashman.algorithm;
 
-import com.company.cashman.lib.DefaultDenomination;
-import com.company.cashman.lib.Denomination;
-import com.company.cashman.lib.DenominationType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -13,9 +10,13 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+import com.company.cashman.lib.DefaultDenomination;
+import com.company.cashman.lib.Denomination;
+import com.company.cashman.lib.DenominationType;
+
 /**
  * {@inheritDoc}
- * Note: This approach is WIP. Please use DynamicProgrammingvariant of CashMan.
+ * Note: This approach is WIP. Please use DynamicProgrammingOfCashMan Algorithm instead.
  */
 @Component
 public class RecursiveImplementationOfCashManAlgorithm implements CashManAlgorithm {
@@ -44,7 +45,7 @@ public class RecursiveImplementationOfCashManAlgorithm implements CashManAlgorit
                 x.getValue().intValue())).collect(Collectors.toSet());
         long matchedCount = outputDenominationSet
             .stream().map(e -> availableCurrencySet.stream()
-            .filter(d -> d.getDenominationType() == e.getDenominationType() && e.getDenominationCount() <= d.getDenominationCount())).count();
+            .filter(d -> d.getDenominationType() == e.getDenominationType() && e.getAvailableDenominationCount() <= d.getAvailableDenominationCount())).count();
         if ((currentSum == withDrawAmount) && matchedCount == outputDenominationSet.size()) {
             logger.info("Withdraw Amount: {}. Found required denominations: {}", withDrawAmount,
                 outputDenominationSet.stream().map(x->x.toString()).collect(Collectors.joining()));

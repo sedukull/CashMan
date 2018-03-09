@@ -53,7 +53,7 @@ public class DynamoDbBasedCashManRepository implements CashManRepository {
             TreeSet<Denomination> denominationTreeSet = new TreeSet<>();
             for (Map<String, AttributeValue> item : result.getItems()) {
                 String denominationType = item.get("getDenominationType").getS();
-                int denominationCount = Integer.parseInt(item.get("getDenominationCount").getS());
+                int denominationCount = Integer.parseInt(item.get("getAvailableDenominationCount").getS());
                 denominationTreeSet.add(new DefaultDenomination(DenominationType.valueOf(denominationType), denominationCount));
             }
             return denominationTreeSet;
@@ -71,7 +71,7 @@ public class DynamoDbBasedCashManRepository implements CashManRepository {
                 ArrayList<DynamoDBBasedCashManTable> cashManTableItemList = new ArrayList<>();
                 denominationSet.stream().forEach(
                     x -> cashManTableItemList.add(
-                        new DynamoDBBasedCashManTable(x.getDenominationType().getValue(), x.getDenominationCount())));
+                        new DynamoDBBasedCashManTable(x.getDenominationType().getValue(), x.getAvailableDenominationCount())));
                 synchronized (this) {
                     DynamoDBMapper mapper = new DynamoDBMapper(client);
                     try {

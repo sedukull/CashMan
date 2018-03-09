@@ -7,24 +7,26 @@ package com.company.cashman.lib;
 public class DefaultDenomination implements Denomination {
 
     private DenominationType denominationType;
-    private int denominationCount;
+    private int availableDenominationCount;
 
     public DefaultDenomination(final DenominationType denominationType, final int denominationCount) {
-        this.denominationType = denominationType;
-        this.denominationCount = denominationCount;
+        if (denominationCount > 0) {
+            this.denominationType = denominationType;
+            this.availableDenominationCount = denominationCount;
+        }
     }
 
     @Override
     public void addCount(final int denominationCount) {
-        if (denominationCount >= 1) {
-            this.denominationCount += denominationCount;
+        if (denominationCount > 0) {
+            this.availableDenominationCount += denominationCount;
         }
     }
 
     @Override
     public void removeCount(final int denominationCount) {
-        if (denominationCount >= 1) {
-            this.denominationCount -= denominationCount;
+        if ((denominationCount > 0) && (denominationCount > availableDenominationCount)) {
+            this.availableDenominationCount -= denominationCount;
         }
     }
 
@@ -34,21 +36,21 @@ public class DefaultDenomination implements Denomination {
     }
 
     @Override
-    public int getDenominationCount() {
-        return this.denominationCount;
+    public int getAvailableDenominationCount() {
+        return this.availableDenominationCount;
     }
 
     public void setDenominationType(final DenominationType denominationType) {
         this.denominationType = denominationType;
     }
 
-    public void setDenominationCount(final int denominationCount) {
-        this.denominationCount = denominationCount;
+    public void setAvailableDenominationCount(final int availableDenominationCount) {
+        this.availableDenominationCount = availableDenominationCount;
     }
 
     @Override
     public long totalValue() {
-        return this.denominationCount * this.denominationType.getValue();
+        return this.availableDenominationCount * this.denominationType.getValue();
     }
 
     @Override
@@ -71,6 +73,6 @@ public class DefaultDenomination implements Denomination {
     @Override
     public String toString() {
         return String.format("DenominationType: %s DenominationCount: %d TotalDenominationValue: %d",
-            this.getDenominationType().name(), this.getDenominationCount(), (this.totalValue()));
+            this.getDenominationType().name(), this.getAvailableDenominationCount(), (this.totalValue()));
     }
 }

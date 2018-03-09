@@ -27,7 +27,7 @@ public class DynamoDBBasedCashManTable {
         this.denominationType = denominationType;
     }
 
-    @DynamoDBAttribute(attributeName = "getDenominationCount")
+    @DynamoDBAttribute(attributeName = "getAvailableDenominationCount")
     public long getDenominationCount() {
         return this.denominationCount;
     }

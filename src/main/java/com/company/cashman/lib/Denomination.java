@@ -26,7 +26,7 @@ public interface Denomination extends Comparable<Denomination> {
      * Returns the denomination count for the given DenominationType.
      * @return denomination count
      */
-    int getDenominationCount();
+    int getAvailableDenominationCount();
 
     /**
      * Provides the total currency for the given denomination(DenominationType * denomination count)

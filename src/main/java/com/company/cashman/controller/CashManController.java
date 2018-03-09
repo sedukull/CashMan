@@ -90,7 +90,7 @@ public class CashManController {
      * Retrieves this count from available total currency in the CashMan application.
      * @return the denomination count for the given denomination type. OK if successful.
      */
-    @RequestMapping("/getDenominationCount/{denominationType:[\\d]+}")
+    @RequestMapping("/getAvailableDenominationCount/{denominationType:[\\d]+}")
     @ResponseBody
     public ResponseEntity<Long> denominationCount(@PathVariable final int denominationType) {
         long count =  cashMan.getDenominationCount(denominationType);

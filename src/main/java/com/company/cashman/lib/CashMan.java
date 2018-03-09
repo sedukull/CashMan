@@ -8,7 +8,7 @@ import java.util.Set;
  *2. withDraw: With draws the given amount from CashMan available currency.
  *3. addToAvailableCurrency: Adds to the available total currency for the CashMan application.
  *4. removeFromAvailableCurrency: Removes from the available total currency.
- *5. getDenominationCount: Retrieve the total denomination count, for the given denomination type.
+ *5. getAvailableDenominationCount: Retrieve the total denomination count, for the given denomination type.
  *6. totalAvailableCurrency: Provides the total available currency in the CashMan application.
  */
 public interface CashMan {

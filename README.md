@@ -7,7 +7,7 @@ Given an amount W, also a positive integer, to find a set of non-negative (posit
 1. Denomination Type: Represents the valid denomination types supported by CashMan application. (EX: 5$, 10$, 20$, 50$ etc).
 2. Denomination Count: Represents the count of various denomination types available in the system.
 3. Denomination: An entity representation of given DenominationType and its total Count Ex: Denomination (5$, 10) represents the count of 5$ available in the CashMan application and its count as 10.
-4. Available Total Currency: Represents the total currency available in the CashMan application, i.e., Sum(denominationType(J) * denominationCount(j)).
+4. Available Total Currency: Represents the total currency available in the CashMan application, i.e., Sum(denominationType(J) * availableDenominationCount(j)).
 
 ## Scope:
 

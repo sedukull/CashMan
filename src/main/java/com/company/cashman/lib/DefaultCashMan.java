@@ -112,9 +112,9 @@ public class DefaultCashMan implements CashMan {
                 .map(x -> x.toString())
                 .collect(Collectors.joining()));
             denominationSet
-                .stream().filter(e -> e.getDenominationCount() > 0).forEach(e -> availableCurrencySet.stream()
+                .stream().filter(e -> e.getAvailableDenominationCount() > 0).forEach(e -> availableCurrencySet.stream()
                 .filter(d -> d.getDenominationType().getValue() == e.getDenominationType().getValue())
-                .findFirst().ifPresent(x->x.addCount(e.getDenominationCount())));
+                .findFirst().ifPresent(x->x.addCount(e.getAvailableDenominationCount())));
         }
     }
 
@@ -133,10 +133,10 @@ public class DefaultCashMan implements CashMan {
                     .map(x -> x.toString())
                     .collect(Collectors.joining()));
                 denominationSet
-                    .stream().filter(e->e.getDenominationCount() > 0).forEach(e -> availableCurrencySet.stream()
+                    .stream().filter(e->e.getAvailableDenominationCount() > 0).forEach(e -> availableCurrencySet.stream()
                     .filter(d -> (d.getDenominationType().getValue() == e.getDenominationType().getValue())
-                        && (d.getDenominationCount()>e.getDenominationCount()))
-                    .findFirst().ifPresent(x->x.removeCount(e.getDenominationCount())));
+                        && (d.getAvailableDenominationCount()>e.getAvailableDenominationCount()))
+                    .findFirst().ifPresent(x->x.removeCount(e.getAvailableDenominationCount())));
             }
         }
     }
@@ -153,7 +153,7 @@ public class DefaultCashMan implements CashMan {
             if (denominationValue > 0) {
                 availableCount = availableCurrencySet.stream()
                     .filter(x -> x.getDenominationType().getValue() == denominationValue)
-                    .mapToInt(x-> x.getDenominationCount()).findFirst().orElse(0);
+                    .mapToInt(x-> x.getAvailableDenominationCount()).findFirst().orElse(0);
             }
             if (availableCount <= 0) {
                 throw new IllegalArgumentException("Invalid denomination type, please check.");

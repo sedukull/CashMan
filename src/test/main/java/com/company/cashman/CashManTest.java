@@ -47,13 +47,13 @@ public class CashManTest {
     public static void setUp() {
         cashManRepository = new DefaultCashManRepository();
         originalDenominationSet = cashManRepository.retrieveDenomination()
-            .stream().map(x->new DefaultDenomination(x.getDenominationType(), x.getDenominationCount())).collect(Collectors.toSet());
+            .stream().map(x->new DefaultDenomination(x.getDenominationType(), x.getAvailableDenominationCount())).collect(Collectors.toSet());
     }
 
     @Before
     public void initializeRepositoryForEveryTest() {
         Set<Denomination> denominationSet = originalDenominationSet
-            .stream().map(x->new DefaultDenomination(x.getDenominationType(), x.getDenominationCount())).collect(Collectors.toSet());
+            .stream().map(x->new DefaultDenomination(x.getDenominationType(), x.getAvailableDenominationCount())).collect(Collectors.toSet());
         cashManRepository.initialize(denominationSet);
         this.cashManInstance = DefaultCashMan.getInstance(cashManRepository, cashManAlgorithm);
     }
@@ -70,7 +70,7 @@ public class CashManTest {
         Set<Denomination> denominationList = this.cashManInstance.withDraw(40);
         Assert.assertEquals(denominationList.size(), 1);
         Assert.assertEquals(denominationList.stream().filter(x -> x.getDenominationType().getValue() == 20)
-            .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0), 2);
+            .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0), 2);
     }
 
     @Test
@@ -78,7 +78,7 @@ public class CashManTest {
         Set<Denomination> denominationList = this.cashManInstance.withDraw(50);
         Assert.assertEquals(denominationList.size(), 1);
         Assert.assertEquals(denominationList.stream().filter(x -> x.getDenominationType().getValue() == 50)
-            .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0), 1);
+            .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0), 1);
     }
 
     @Test
@@ -86,9 +86,9 @@ public class CashManTest {
         Set<Denomination> denominationList = this.cashManInstance.withDraw(60);
         Assert.assertEquals(denominationList.size(), 2);
         Assert.assertEquals(denominationList.stream().filter(x -> x.getDenominationType().getValue() == 50)
-            .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0), 1);
+            .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0), 1);
         Assert.assertEquals(denominationList.stream().filter(x -> x.getDenominationType().getValue() == 10)
-            .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0), 1);
+            .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0), 1);
     }
 
     @Test
@@ -96,11 +96,11 @@ public class CashManTest {
         Set<Denomination> denominationList = this.cashManInstance.withDraw(80);
         Assert.assertEquals(denominationList.size(), 3);
         Assert.assertEquals(denominationList.stream().filter(x -> x.getDenominationType().getValue() == 50)
-            .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0), 1);
+            .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0), 1);
         Assert.assertEquals(denominationList.stream().filter(x -> x.getDenominationType().getValue() == 10)
-            .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0), 1);
+            .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0), 1);
         Assert.assertEquals(denominationList.stream().filter(x -> x.getDenominationType().getValue() == 20)
-            .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0), 1);
+            .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0), 1);
     }
 
     @Test
@@ -108,7 +108,7 @@ public class CashManTest {
         Set<Denomination> denominationList = this.cashManInstance.withDraw(100);
         Assert.assertEquals(denominationList.size(), 1);
         Assert.assertEquals(denominationList.stream().filter(x -> x.getDenominationType().getValue() == 100)
-            .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0), 1);
+            .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0), 1);
     }
 
     @Test
@@ -117,9 +117,9 @@ public class CashManTest {
         Assert.assertEquals(denominationList.size(), 2);
         Assert.assertEquals(denominationList.stream()
             .filter(x -> x.getDenominationType()
-                .getValue() == 100).mapToInt(x->x.getDenominationCount()).findFirst().orElse(0), 1);
+                .getValue() == 100).mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0), 1);
         Assert.assertEquals(denominationList.stream().filter(x -> x.getDenominationType().getValue() == 10)
-            .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0), 1);
+            .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0), 1);
     }
 
     @Test
@@ -127,9 +127,9 @@ public class CashManTest {
         Set<Denomination> denominationList = this.cashManInstance.withDraw(150);
         Assert.assertEquals(denominationList.size(), 2);
         Assert.assertEquals(denominationList.stream().filter(x -> x.getDenominationType().getValue() == 100)
-            .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0), 1);
+            .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0), 1);
         Assert.assertEquals(denominationList.stream().filter(x -> x.getDenominationType().getValue() == 50)
-            .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0), 1);
+            .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0), 1);
     }
 
     @Test
@@ -137,7 +137,7 @@ public class CashManTest {
         Set<Denomination> denominationList = this.cashManInstance.withDraw(200);
         Assert.assertEquals(denominationList.size(), 1);
         Assert.assertEquals(denominationList.stream().filter(x -> x.getDenominationType().getValue() == 100)
-            .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0), 2);
+            .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0), 2);
     }
 
     @Test(expected = CashNotAvailableException.class)
@@ -169,7 +169,7 @@ public class CashManTest {
         this.cashManInstance.addToAvailableCurrency(new HashSet<>(Arrays.asList(toAdd)));
         int count = this.cashManInstance.totalAvailableCurrency()
             .stream().filter(x -> x.getDenominationType().getValue() == 50)
-            .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0);
+            .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0);
         Assert.assertEquals(count, 10);
     }
 
@@ -178,7 +178,7 @@ public class CashManTest {
         int currencyValue = 5;
         Assert.assertEquals(this.cashManInstance.getDenominationCount(currencyValue),
             cashManRepository.retrieveDenomination().stream().filter(x->x.getDenominationType().getValue() == currencyValue)
-                .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0));
+                .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0));
     }
 
     @Test
@@ -186,7 +186,7 @@ public class CashManTest {
         int currencyValue = 10;
         Assert.assertEquals(this.cashManInstance.getDenominationCount(currencyValue),
             cashManRepository.retrieveDenomination().stream().filter(x->x.getDenominationType().getValue() == currencyValue)
-                .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0));
+                .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0));
     }
 
     @Test
@@ -194,7 +194,7 @@ public class CashManTest {
         int currencyValue = 20;
         Assert.assertEquals(this.cashManInstance.getDenominationCount(currencyValue),
             cashManRepository.retrieveDenomination().stream().filter(x->x.getDenominationType().getValue() == currencyValue)
-                .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0));
+                .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0));
     }
 
     @Test
@@ -202,7 +202,7 @@ public class CashManTest {
         int currencyValue = 50;
         Assert.assertEquals(this.cashManInstance.getDenominationCount(currencyValue),
             cashManRepository.retrieveDenomination().stream().filter(x->x.getDenominationType().getValue() == currencyValue)
-                .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0));
+                .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0));
     }
 
     @Test
@@ -210,6 +210,6 @@ public class CashManTest {
         int currencyValue = 100;
         Assert.assertEquals(this.cashManInstance.getDenominationCount(currencyValue),
             cashManRepository.retrieveDenomination().stream().filter(x->x.getDenominationType().getValue() == currencyValue)
-                .mapToInt(x->x.getDenominationCount()).findFirst().orElse(0));
+                .mapToInt(x->x.getAvailableDenominationCount()).findFirst().orElse(0));
     }
 }
